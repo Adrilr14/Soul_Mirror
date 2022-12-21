@@ -1,32 +1,26 @@
 #pragma once
-#include "../../ecs/cmp/component.hpp"
-#include <tuple>
+#include <ecs/cmp/component.hpp>
 #include <string_view>
 #include <string>
 #include <cstdint>
-#include <iostream>
 
 struct RenderComponent_t : ComponentBase_t<RenderComponent_t>{
     explicit RenderComponent_t(EntityID_t eid)
     : ComponentBase_t(eid)
     {}
 
-    void loadDimensions(float dw,float dh,float dl){
+    void loadDimensions(uint32_t dw,uint32_t dh,uint32_t dl){
         w = dw;
         h = dh;
         l = dl;
     }
 
-    void loadFilesNames(const std::string_view pathModel, const std::string_view pathTexture){
-        modelPath = pathModel.data();
-        texturePath = pathTexture.data();
+    void loadFilesNames(const std::string_view path,const std::string_view texture){
+        modelPath = path.data();
+        texturePath = texture.data();
     }
 
-    const std::tuple<float,float,float> getData() const { return std::tuple{h,w,l}; };
-
-    float w { 0 }, h { 0 }, l { 0 };
+    uint32_t w { 0 }, h { 0 }, l { 0 };
     std::string modelPath;
     std::string texturePath;
-    std::string texturePathDamage {""};
-    bool isVisible{true};
 };

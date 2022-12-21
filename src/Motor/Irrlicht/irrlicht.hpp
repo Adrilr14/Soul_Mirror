@@ -5,13 +5,6 @@
 #include <fstream>
 #include <vector>
 #include <facade/RavenSound.hpp>
-#include <game/cmp/RenderComponent.hpp>
-#include <game/cmp/PhysicsComponent.hpp>
-#include <game/cmp/InputComponent.hpp>
-#include <game/cmp/StaticComponent.hpp>
-#include <game/cmp/DirecComponent.hpp>
-#include <game/cmp/IAComponent.hpp>
-#include <ecs/util/typealias.hpp>
 
 
 #ifdef _IRR_WINDOWS_
@@ -21,8 +14,6 @@
 
 
 struct Irrlicht_t;
-struct Entity_t;
-struct EntityManager_t;
 
 
 class Input : public irr::IEventReceiver
@@ -35,12 +26,13 @@ public:
     virtual bool IsKeyDown(irr::EKEY_CODE keyCode) const;
     // This is used to check the left clck (mouse)
     virtual bool IsLeftClickDown() const;
-    irr::core::vector3df comproveMovement(irr::scene::ISceneManager* smgr, irr::f32 speed, irr::f32 frame, irr::scene::ISceneNode* one,std::vector<irr::scene::ISceneNode*> collideables, bool died, irr::video::IVideoDriver* driver);
+    irr::core::vector3df comproveMovement(irr::scene::ISceneManager* smgr, irr::f32 speed, irr::f32 frame, irr::scene::ISceneNode* one,std::vector<irr::scene::ISceneNode*> collideables, int died, irr::video::IVideoDriver* driver);
 	void moveEnemy(int died, irr::scene::ISceneNode* enemy, irr::core::vector3df pos, irr::f32 MOVEMENT_SPEED_ENEMY, irr::f32 frameDeltaTime, std::vector<irr::scene::ISceneNode*> collideables);   
     //void moveEnemyPosIni(int died, irr::scene::ISceneNode* enemy, irr::core::vector3df posIni, irr::f32 MOVEMENT_SPEED_ENEMY, irr::f32 frameDeltaTime, std::vector<irr::scene::ISceneNode*> collideables);
 	//bool moveCam(bool cam, irr::scene::ISceneNode *map);
     void moveDraggable(irr::scene::ISceneManager* smgr, irr::scene::ISceneNode* draggable, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime, std::vector<irr::scene::ISceneNode*> collideables);
     void moveObject (irr::scene::ISceneNode* object, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime, int direction);
+	void moveEnemyShot (irr::scene::ISceneNode* object, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime, float shotRotation);
     //void printXYZ(scene::ISceneNode *);
 
 
@@ -52,8 +44,6 @@ private:
 
 
 struct Irrlicht_t {
-
-using VecEntities_t = Vec_t<Entity_t>;
 
 private:
 	RavenSound sound;
@@ -67,12 +57,21 @@ private:
 
 	// Vectores de objetos
 	std::vector<irr::scene::ISceneNode*> collideables; // Array para toos los objetos con colisión
-	// Vector para los enemigos
+
+	// Vectores para los enemigos
 	std::vector<irr::scene::ISceneNode*> enemies;
+	std::vector<irr::core::vector3df> enemyFirstLook; // Vector para guardar la posición a la que mira inicialmente el enemigo
+	std::vector<int> enemyStatus; // Vector para guardar el estado de los enemigos (disparar, esperar, atacar...)
+	std::vector<int> enemyTime; // Vector para controlar el estado de un enemigo con el paso del tiempo
+
 	// Vector para el rango de los enemigos
 	std::vector<irr::scene::ISceneNode*> ranges;
 	// Vector para las posiciones iniciales de los enemigos
 	std::vector<irr::core::vector3df> posIniEnemies;
+	// Vector para los disparos de los enemigos y otro para el ángulo de avance de los disparos
+	std::vector<irr::scene::ISceneNode*> shots;
+	std::vector<float> shotsAngle;
+
 	// Vector para las llaves
 	std::vector<irr::scene::ISceneNode*> keys;
 	// Vector para las puertas que se abren con llave
@@ -110,14 +109,14 @@ private:
 	int  hit_points;	// Puntos de salud (HP) del jugador
 	int  max_hp;		// Puntos de salud (HP) máximos del jugador
 	// ---------------------------------------------------------
-	int  direction;		// 1 --> derecha; 2 --> izquierda; 3 --> arriba; 4 --> abajo; 
-	int throw_direction;// 5 --> derecha-arriba; 6 --> izquierda-arribs; 7 --> derecha-abajo; 8 --> izquierda-abajo;
+	int  direction;		// 1 --> derecha; 2 --> izquierda; 3 --> arriba; 4 --> abajo; 5 --> derecha-arriba; 6 --> izquierda-arriba; 7 --> derecha-abajo; 8 --> izquierda-abajo;
+	int throw_direction;// 1 --> derecha; 2 --> izquierda; 3 --> arriba; 4 --> abajo; 5 --> derecha-arriba; 6 --> izquierda-arriba; 7 --> derecha-abajo; 8 --> izquierda-abajo;
 	// --------------------------------------------------------- 
 	int weapon;			// 0 --> Sin arma; 1 --> espada; 2 --> escudo; 3 --> arco; 4 --> bomba; 5 --> pociones;
 	// ---------------------------------------------------------
 	int shield;			// 0 --> Sin proteger; 1 --> Proteger;
 	// ---------------------------------------------------------
-	int  died; 			// 0 --> normal; 1 --> golpeado; 2 --> muerto o parado; 3 --> Bebiendo poción; 4 --> Abriendo cofre
+	int  status; 			// 0 --> normal; 1 --> golpeado; 2 --> muerto o parado; 3 --> Bebiendo poción; 4 --> Abriendo cofre
 	// ---------------------------------------------------------
 	int catched;		// 0 --> Sin coger; 1 --> Cogido; 2 --> Lanzado; 3 --> Arrastrable cogido; 4 --> Flecha disparada
 	// ---------------------------------------------------------
@@ -132,7 +131,7 @@ private:
 	int lastFPS = -1;
 	irr::u32 then;
 	irr::f32 MOVEMENT_SPEED;
-	irr::f32 MOVEMENT_SPEED_ENEMY = 10.0f;
+	irr::f32 MOVEMENT_SPEED_ENEMY = 14.0f;
 
 
 
@@ -146,13 +145,26 @@ private:
     bool colBomba = false;
     int contFPS = 0;
     bool zoneChange = true;
-	bool updateHearts = true;
 	bool open = false;
 	bool fin = false;
 	Input input;
 	int menu = 0;
 	bool pause = false;
 	irr::f32 frameDeltaTime;
+
+	std::string name; // Variable para crear Strings
+    const char* nameToChar; // Variable para pasar la variable name (String) a tipo char
+	bool checkSoundBanda = true; // Variable para comprobar si se ha iniciado la banda sonora
+    bool checkSoundPasos = true; // Variable para comprobar si ha empezado a caminar
+    int btn_check = 0; // Botón seleccionado en el menú; 0 --> resume; 1 --> load; 2 --> exit 
+    int change_btn_check = btn_check; // Variable auxiliar para comprobar si en el menú se cambia de botón
+    bool updateHearts = true; // Variable para saber si hay que actualizar los corazones
+    bool updateWeapon = true; // Variable para saber si hay que actualizar las armas
+	bool updatePotionsKeysHUD = true; // Variable para saber si hay que dibujar la imagen del HUD de la poción y la llave
+	bool updatePotions = true; // Variable para saber si hay que actualizar el número de pociones
+	bool updateKeys = true; // Variable para saber si hay que actualizar el número de llaves
+    double pi = M_PI; //  Valor del número pi
+    int countShot = 0; // Valor que aumenta cada vez qeue se añade un disparo a la escena
 
 	irr::gui::IGUIButton *btn;
     //irr::gui::IGUIWindow* win;
@@ -169,9 +181,7 @@ private:
 
 public:
 	Irrlicht_t(){};
-	void createWindow(uint32_t, uint32_t);
-	void createEntities(const VecEntities_t&);
-	void createWindow(uint32_t w, uint32_t h,const VecEntities_t& entities);
+	void createWindow(uint32_t w, uint32_t h);
 	void physicsInit();
 	void renderInit();
 	void run();
@@ -186,8 +196,6 @@ public:
 	void endScene();
 	void NodeLoadMaterial();
 	void addCamera();
-	void cameraTrack(Entity_t*);
-	void checkTeclado(Entity_t*);
     //Funciones colisiones
     static bool checkCollision(irr::scene::ISceneNode* one, irr::scene::ISceneNode* two);
     static bool checkCollisionCollideables(irr::scene::ISceneNode* one, std::vector<irr::scene::ISceneNode*> collideables);
@@ -199,9 +207,9 @@ public:
     static bool checkCollisionBomba(irr::scene::ISceneNode* bomba, irr::scene::ISceneNode* enemy);
     static bool checkCollisionPlayerBomb(irr::scene::ISceneNode* bomba, irr::scene::ISceneNode* cube_player);
 	static bool checkCollisionEnemiesPlayer(irr::scene::ISceneNode* range, irr::scene::ISceneNode* cube_player);
+	static int checkCollisionShotCollideables(irr::scene::ISceneNode* shot, std::vector<irr::scene::ISceneNode*> collideables);
     //Funciones render
     void render();
-	void renderUpdate(EntityManager_t&);
 
 	bool getDeviceRun() const;
 	irr::IrrlichtDevice* getDevice();

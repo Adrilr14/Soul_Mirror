@@ -1,4 +1,3 @@
-//CAMBIAR ESTO A C Q ESTA EN C++ Q LOS SONIDOS NO SUENAN BIEN EA
 
 #include "sound_fmod.hpp"
 #include <thread>        
@@ -8,16 +7,16 @@ Sound_FMOD_t::Sound_FMOD_t(){
     void *extraDriverData = nullptr;
 
     systemStudio = nullptr;
-    ourErrorCheck( FMOD::Studio::System::create(&systemStudio));
-    ourErrorCheck( systemStudio->initialize(1024, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, extraDriverData) );
+    ourErrorCheck( FMOD_Studio_System_Create(&systemStudio,FMOD_VERSION));
+    ourErrorCheck( FMOD_Studio_System_Initialize(systemStudio,1024, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, extraDriverData) );
 
     coreSystem = nullptr;
-    ourErrorCheck( systemStudio->getCoreSystem(&coreSystem) );
+    ourErrorCheck( FMOD_Studio_System_GetCoreSystem(systemStudio,&coreSystem) );
 }
 
 Sound_FMOD_t::~Sound_FMOD_t(){
-    ourErrorCheck( systemStudio->unloadAll() );
-    ourErrorCheck( systemStudio->release() );
+    ourErrorCheck(FMOD_Studio_System_UnloadAll(systemStudio) );
+    ourErrorCheck( FMOD_Studio_System_Release(systemStudio) );
 }
 
 void Sound_FMOD_t::loadBanks(const std::string& bankName, FMOD_STUDIO_LOAD_BANK_FLAGS flags){
@@ -25,8 +24,9 @@ void Sound_FMOD_t::loadBanks(const std::string& bankName, FMOD_STUDIO_LOAD_BANK_
    if(tFoundit != bancos.end()){
        return;
    }
-	FMOD::Studio::Bank* pBank;
-	ourErrorCheck(systemStudio->loadBankFile(bankName.c_str(), flags, &pBank));
+    
+	FMOD_STUDIO_BANK* pBank;
+	ourErrorCheck(FMOD_Studio_System_LoadBankFile(systemStudio, bankName.c_str(), flags, &pBank));
 	if (pBank) {
         bancos[bankName] = pBank;
 	}
@@ -35,11 +35,11 @@ void Sound_FMOD_t::loadBanks(const std::string& bankName, FMOD_STUDIO_LOAD_BANK_
 void Sound_FMOD_t::loadEvent(const std::string& eventName){
     auto tFoundIt = eventos.find(eventName);
     if(tFoundIt != eventos.end()){return;}
-    FMOD::Studio::EventDescription* pDescripcion = nullptr;
-    ourErrorCheck(systemStudio->getEvent(eventName.c_str(),&pDescripcion));
+    FMOD_STUDIO_EVENTDESCRIPTION* pDescripcion = nullptr;
+    ourErrorCheck(FMOD_Studio_System_GetEvent(systemStudio, eventName.c_str(),&pDescripcion));
     if(pDescripcion){
-        FMOD::Studio::EventInstance* pInstancia = nullptr;
-        ourErrorCheck(pDescripcion->createInstance(&pInstancia));
+        FMOD_STUDIO_EVENTINSTANCE* pInstancia = nullptr;
+        ourErrorCheck(FMOD_Studio_EventDescription_CreateInstance(pDescripcion, &pInstancia));
         if(pInstancia){
             eventos[eventName] = pInstancia;
         }
@@ -54,7 +54,8 @@ void Sound_FMOD_t::playEvent(const std::string& eventName){
         tFoundit = eventos.find(eventName);
         if(tFoundit == eventos.end()){return;}
     }
-    ourErrorCheck(tFoundit->second->start());
+    
+    ourErrorCheck(FMOD_Studio_EventInstance_Start(tFoundit->second));
     //Sound_FMOD_t::sleep();
 }
 
@@ -67,7 +68,7 @@ void Sound_FMOD_t::playEvent(const std::string& eventName,const std::string& eve
     }
     //si lo ha encontrado hacemos un setParameter
     Sound_FMOD_t::setEventParameter(eventName,eventParam,value);
-    ourErrorCheck(tFoundit->second->start());
+    ourErrorCheck(FMOD_Studio_EventInstance_Start(tFoundit->second));
     //Sound_FMOD_t::sleep(); 
 }
 
@@ -76,29 +77,29 @@ void Sound_FMOD_t::stopEvent(const std::string& eventName,bool action){
     if(tFoundit ==  eventos.end()){return;}
     FMOD_STUDIO_STOP_MODE eMode;
 	eMode = action ? FMOD_STUDIO_STOP_IMMEDIATE : FMOD_STUDIO_STOP_ALLOWFADEOUT;
-	ourErrorCheck(tFoundit->second->stop(eMode));
+	ourErrorCheck(FMOD_Studio_EventInstance_Stop(tFoundit->second,eMode));
 }
 
 void Sound_FMOD_t::getEventParameter(const std::string& eventName,const std::string& eventP,float *p){
     auto tFoundit = eventos.find(eventName);
     if(tFoundit == eventos.end()){return;}
-    ourErrorCheck(tFoundit->second->getParameterByName(eventP.c_str(),p));
+    ourErrorCheck(FMOD_Studio_System_GetParameterByName(systemStudio,eventP.c_str(),p,nullptr));
 }
 
 void Sound_FMOD_t::setEventParameter(const std::string& eventName,const std::string& eventP,float p){
     auto tFoundit = eventos.find(eventName);
     if(tFoundit == eventos.end()){return;}
-    FMOD::Studio::EventDescription* eventDescription = nullptr;
-    ourErrorCheck(systemStudio->getEvent(eventName.c_str(),&eventDescription));
+    FMOD_STUDIO_EVENTDESCRIPTION* eventDescription = nullptr;
+    ourErrorCheck( FMOD_Studio_System_GetEvent(systemStudio,eventName.c_str(),&eventDescription));
     FMOD_STUDIO_PARAMETER_DESCRIPTION paramDesc;
-    ourErrorCheck(eventDescription->getParameterDescriptionByName(eventP.c_str(),&paramDesc));
+    ourErrorCheck( FMOD_Studio_EventDescription_GetParameterDescriptionByName(eventDescription,eventP.c_str(),&paramDesc));
     std::string name = paramDesc.name;
-    ourErrorCheck(tFoundit->second->setParameterByName(name.c_str(),p));
+    ourErrorCheck(FMOD_Studio_System_SetParameterByName(systemStudio,name.c_str(),p,false));
 }
 
 
 void Sound_FMOD_t::studioUpdate(){
-    ourErrorCheck(systemStudio->update());
+    ourErrorCheck(FMOD_Studio_System_Update(systemStudio));
 }
 
     

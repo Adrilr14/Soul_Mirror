@@ -30,7 +30,7 @@ endif
 #
 APP 		:= soulMirror
 CPU 		:= x86_64
-CCFLAGS		:= -Wall -pedantic -O2 -m64 -std=c++17 -ggdb3
+CCFLAGS		:= -Wall -pedantic -O2 -m64 -std=c++17
 CFLAGS 		:= $(CCFLAGS)
 CC 		:= g++ -pthread
 C 		:= gcc
@@ -44,20 +44,10 @@ Core		:= core
 Studio		:= studio
 FMODHome 	:= lib/apiFMOD
 LOWLEVEL_LIB 	:= lib/Linux/apiFMOD/core/lib/${CPU}/libfmod${SUFFIX}.so
-STUDIO_LIB 		:= lib/Linux/apiFMOD/studio/lib/${CPU}/libfmodstudio${SUFFIX}.so
+STUDIO_LIB 	:= lib/Linux/apiFMOD/studio/lib/${CPU}/libfmodstudio${SUFFIX}.so
 IRRLICHT_LIB 	:= lib/Linux/irrlicht/libIrrlicht.so.1.8.4
-GL_LIB 			:= lib/Linux/openGL/gl/libGL.so
-GLU_LIB 		:= lib/Linux/openGL/libGLU.so
-GLFW_LIB 		:= lib/Linux/openGL/glfw/libglfw.so
-GLEW_LIB 		:= lib/Linux/openGL/glew/libGLEW.so
-SOIL_LIB		:= lib/Linux/openGL/soil/libSOIL.a
-
-LIBS 		:= -lX11 -lXext -Wl,-rpath=\$$ORIGIN/$(dir ${LOWLEVEL_LIB}),-rpath=\$$ORIGIN/$(dir ${STUDIO_LIB}) ${LOWLEVEL_LIB} ${STUDIO_LIB} -Wl,-rpath=\$$ORIGIN/$(dir ${IRRLICHT_LIB}) ${IRRLICHT_LIB} -Wl,-rpath=\$$ORIGIN/$(dir ${GLFW_LIB}) ${GLFW_LIB}
-LIBS		+=	-Wl,-rpath=\$$ORIGIN/$(dir ${GLEW_LIB}) 	${GLEW_LIB} 
-LIBS		+=	-Wl,-rpath=\$$ORIGIN/$(dir ${SOIL_LIB}) 	${SOIL_LIB}
-LIBS		+=	-Wl,-rpath=\$$ORIGIN/$(dir ${GL_LIB}) 		${GL_LIB} 
-LIBS		+=	-Wl,-rpath=\$$ORIGIN/$(dir ${GLU_LIB}) 		${GLU_LIB} 
-INCDIRS		:= -I$(SRC) -I$(LIBDIR) -I./include/irrlicht/include -I./include/fmod/core/inc -I./include/fmod/studio/inc -I./include/openGL/ -I./include/openGL/glfw -I./include/openGL/glm/ -I./include/fmod/core/inc -I./include/JSON/include -I./include/openGL/glew/ -I./include/openGL/soil/ -I./include/openGL/OBJ-Loader/ 
+LIBS 		:= -lX11 -lXext -Wl,-rpath=\$$ORIGIN/$(dir ${LOWLEVEL_LIB}),-rpath=\$$ORIGIN/$(dir ${STUDIO_LIB}) ${LOWLEVEL_LIB} ${STUDIO_LIB} -Wl,-rpath=\$$ORIGIN/$(dir ${IRRLICHT_LIB}) ${IRRLICHT_LIB}
+INCDIRS		:= -I$(SRC) -I$(LIBDIR) -I./include/irrlicht/include -I./include/fmod/core/inc -I./include/fmod/studio/inc -I./include/openGL/glm/ -I./include/openGL/GLFW -I./include/openGL/assimp -I./include/fmod/core/inc -I./include/JSON/include 
 
 ifdef DEBUG
 	CCFLAGS += -g

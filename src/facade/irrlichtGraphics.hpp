@@ -1,13 +1,39 @@
 #pragma once
 
+#include <cstdint>
+#include <facade/Controller.hpp>
+#include <Motor/Irrlicht/irrlicht.hpp>
+
+struct irrlichtGraphics : public Controller_t{
+    irrlichtGraphics(){};
+    virtual ~irrlichtGraphics();
+    //Funciones para el motor de Irrlicht
+    void createWindow(uint32_t , uint32_t) override;
+    void beginScene() override;
+    bool run() override;
+    void getInput() override {};
+    void endScene() override;
+    void updateEntities() override{};
+    void Addcamera() override{};
+    void addEntities() override{};
+    void renderInit() override;
+    void shutEngine() override{};
+    void physicsInit() override;
+    void cameraUpdate() override;
+    void addManager(EntityManager_t&) override{};
+    void renderScene() override;
+
+private:
+    Irrlicht_t irr;
+};
+
+/*#pragma once
 
 #include <cstdint>
-#include "Controller.hpp"
+#include <facade/Controller.hpp>
+#include <EventManager/Event.hpp>
 #include <irrlicht.h>
-
 using VecEntities_t = Vec_t<Entity_t>;
-struct EventInfo;
-
 
 class Input : public irr::IEventReceiver
 {
@@ -31,43 +57,25 @@ private:
 };
 
 
-
 struct irrlichtGraphics : public Controller_t{
     irrlichtGraphics();
     virtual ~irrlichtGraphics();
     //Funciones para el motor de Irrlicht
     void createWindow() override;
     void beginScene() override;
-    void getInputInit() override;
-    void getInputCredits() override;
-    void getInputGame() override;
-    void getInputControls() override;
-    void getInputPause() override;//la pausa como tal no es un estado, pero hay que recibir su input igualmente
+    void getInput() override;
     void updateEntities() override;
     bool run() override;
+    void renderInit() override;
+    void physicsInit() override;
     void Addcamera() override;
     void cameraUpdate() override;
-    void addEntities(EventInfo) override;
+    void addEntities() override;
     void renderScene() override;
     void endScene() override;
     void shutEngine() override;
     void addManager(EntityManager_t&) override;
-    void addEntity(EventInfo info);
-    void addAnimations() override {};// crea todas las animaciones del juego
-    void removeEntity(EventInfo info);
     void probando();
-    void addEventListeners();
-    void removeEntities(EventInfo);
-    void removeEntity(std::size_t);
-    void addEntities2();
-    void drawInit() override;//dibujado del init state
-    void drawCredits() override;//dibujado del credits state
-    void drawGame() override;//dibujado del juego
-    void drawControls() override;//dibujado del controls state
-    void drawPause() override;//la pausa no es un estado como tal, pero hay que dibujar cosas
-    int getDirection();
-    std::vector<std::string> splitPattern(const std::string_view s,const char* delimiter);
-    void checkColisions() override;
         
 private:
     Input input;
@@ -79,5 +87,4 @@ private:
 	irr::scene::IAnimatedMeshSceneNode *node;
     irr::scene::ICameraSceneNode *camera;
 	irr::scene::ISceneNode *object;
-    irr::scene::ISceneNode *object2;
-};
+};*/

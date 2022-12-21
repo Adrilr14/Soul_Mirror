@@ -1,12 +1,11 @@
 #pragma once
 
 #include <cstdint>
-#include "../../ecs/util/typealias.hpp"
-#include "../../facade/RavenGraphics.hpp"
-#include "../cmp/PhysicsComponent.hpp"
-#include "../cmp/InputComponent.hpp"
-#include "../cmp/CameraComponent.hpp"
-
+#include <ecs/util/typealias.hpp>
+#include <facade/RavenGraphics.hpp>
+#include <game/cmp/PhysicsComponent.hpp>
+#include <game/cmp/InputComponent.hpp>
+#include <game/cmp/CameraComponent.hpp>
 
 struct ControllerMan;
 

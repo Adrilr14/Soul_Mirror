@@ -1,12 +1,11 @@
 #pragma once
 
-struct EntityManager_t;
+#include <ecs/util/typealias.hpp>
 
+template <typename GameCTX_t>
 struct HealthSystem_t{
-    explicit HealthSystem_t(EntityManager_t& em):
-    manager(em){}
-    void Update() const;
-    
-    private:
-        EntityManager_t& manager;
-};
+
+    explicit HealthSystem_t() = default;
+    constexpr void update(GameCTX_t& g) const noexcept;
+
+}; 

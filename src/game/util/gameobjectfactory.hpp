@@ -1,23 +1,33 @@
 #pragma once
 #include <string_view>
 #include <cstdint>
-
+#include "../../EventManager/EventManager.hpp"
+#include "../../Motor/BulletEngine/BulletEngine.hpp"
 
 //Fordward declaration
 struct EntityManager_t;
 struct Entity_t;
+struct GameObjectFactory_t {
+    explicit GameObjectFactory_t(EntityManager_t& em,std::shared_ptr<BulletEngine>& b) : m_EntMan(em), bulletEngine_t(b) {
 
-struct GameOBjectFactory_t {
-    explicit GameOBjectFactory_t(EntityManager_t& em):
-    m_EntMan(em){}
-    Entity_t& createEntity(float whd,int32_t ax,int32_t ay,int32_t az,const std::string_view nombre,const std::string_view ruta) const;
-    void createPlayer(float,float,float, const std::string_view) const;
-    void createStaticEntity(const std::string_view,const std::string_view, const std::string_view) const;
-    void createEnemy(int32_t, int32_t,int32_t,const std::string_view, const std::string_view, const std::string_view) const;
+    }
+    void createPlayer(float,float,float,const std::string_view,const std::string_view) const;
+    void createStaticEntity(float x,float y,float z,float rx,float ry,float rz,float width,float height,float length,const std::string_view nombre, 
+    const std::string_view rutamodel, const std::string_view rutatexture) const;
+    void createNonStaticEntity(float x,float y,float z,float rx,float ry,float rz,float width,float height,float length,const std::string_view nombre, 
+    const std::string_view rutamodel, const std::string_view rutatexture) const;
+    void createStaticEntityNonRender(float x,float y,float z,float rx,float ry,float rz,float width,float height,float length,const std::string_view nombre, 
+    const std::string_view rutamodel) const;
+    void createEnemy(float,float,float,const std::string_view, const std::string_view, const std::string_view,int type) const;
+    void createShot(EventInfo info);
     void createCamera();
-    void readLevel(std::string_view);
+    void createWeapons(const std::string_view name,const std::string_view ruta,const std::string_view texture) const; 
+    void readLevel(EventInfo) noexcept;
+    void addEventListeners();
+    void prueba(EventInfo);
 private:
     EntityManager_t& m_EntMan;
+    std::shared_ptr<BulletEngine>& bulletEngine_t;
 };
 
 

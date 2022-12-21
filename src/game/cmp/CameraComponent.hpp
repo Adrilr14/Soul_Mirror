@@ -1,6 +1,6 @@
 #pragma once
 #include <cstdint>
-#include <ecs/cmp/component.hpp>
+#include "../../ecs/cmp/component.hpp"
 
 struct CameraComponent_t : ComponentBase_t<CameraComponent_t>{
     explicit CameraComponent_t(std::size_t eid)

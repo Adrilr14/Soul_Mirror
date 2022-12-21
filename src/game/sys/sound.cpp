@@ -1,5 +1,5 @@
-#include <game/sys/sound.hpp>
-#include <facade/RavenSound.hpp>
+#include "sound.hpp"
+#include "../../facade/RavenSound.hpp"
 
 soundSystem_t::soundSystem_t(RavenSound& s) : sound{s}{}
 

@@ -7,7 +7,6 @@
 #include <iostream>
 
 Mapa::Mapa(){
-
     nodes = new Snode[fila*columna];
 
 
@@ -66,7 +65,7 @@ void Mapa::Solve_Astar(){
 		};
 
         Snode *nodeCurrent = nodeStart;
-		nodeStart->flocalGoal = 0.0f;
+		nodeStart->flocalGoal = 0.0f;   
 		nodeStart->fGlobalGoal = heuristic(nodeStart, nodeEnd);
 
         std::list<Snode*> listNotTestedNodes;
@@ -91,7 +90,7 @@ void Mapa::Solve_Astar(){
 			
 					
 			// Check each of this node's neighbours...
-			for (auto nodeNeighbour : nodeCurrent->vecNeibour)
+			for (auto nodeNeighbour : nodeCurrent->vecNeibour )
 			{
 				// ... and only if the neighbour is not visited and is 
 				// not an obstacle, add it to NotTested List

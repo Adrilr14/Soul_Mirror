@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-
+    
 struct Snode{
     bool obstaculo = false;
     bool visitado = false;

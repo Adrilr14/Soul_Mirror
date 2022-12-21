@@ -1,11 +1,13 @@
 #pragma once
 #include <cstdint>
-#include <ecs/util/typealias.hpp>
+#include "../util/typealias.hpp"
 
 struct Component_t{
     explicit Component_t(EntityID_t eid) 
     : entityID {eid}
     {}
+
+    virtual ~Component_t() = default;
     constexpr ComponentID_t   getCompId()     const noexcept {return ComponentID;};
     constexpr EntityID_t      getEntityID()   const noexcept {return entityID;};
     
@@ -22,7 +24,7 @@ template <typename TYPE>
 struct ComponentBase_t : Component_t {
     explicit ComponentBase_t(EntityID_t eid)
     : Component_t(eid) {}
-
+    virtual ~ComponentBase_t() = default;
     static ComponentTypeID_t getComponentTypeID() noexcept{
         static ComponentTypeID_t typeID { ++nextTypeID };
         return typeID;

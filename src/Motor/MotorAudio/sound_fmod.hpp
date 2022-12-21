@@ -1,10 +1,7 @@
 #pragma once
 
-extern "C" {
-    #include "fmod_studio.h"
-    #include "fmod.h"
-}
-
+#include "fmod_studio.hpp"
+#include "fmod.hpp"
 #include <string>
 #include <map>
 
@@ -25,11 +22,11 @@ struct Sound_FMOD_t
     bool ourErrorCheck(FMOD_RESULT result);
 
 private:
-    FMOD_STUDIO_SYSTEM* systemStudio;
-    FMOD_SYSTEM* coreSystem = nullptr;
-    typedef std::map<std::string,FMOD_STUDIO_BANK*> BankMap;
-    typedef std::map<std::string,FMOD_STUDIO_EVENTINSTANCE*> EventMap;
-    BankMap bancos;
-    EventMap eventos;
-    void *extraDriverData = nullptr;
+FMOD::Studio::System* systemStudio;
+FMOD::System* coreSystem = nullptr;
+typedef std::map<std::string,FMOD::Studio::Bank*> BankMap;
+typedef std::map<std::string,FMOD::Studio::EventInstance*> EventMap;
+BankMap bancos;
+EventMap eventos;
+void *extraDriverData = nullptr;
 };

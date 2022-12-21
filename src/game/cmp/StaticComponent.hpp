@@ -1,6 +1,6 @@
 #pragma once
 #include <cstdint>
-#include <ecs/cmp/component.hpp>
+#include "../../ecs/cmp/component.hpp"
 
 
 //este componente seguramente sera prescindible en un futuro, es para las paredes de momento ya que el personaje y tal no tiene modelado y se carga con un addcube

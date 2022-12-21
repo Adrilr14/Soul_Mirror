@@ -1,46 +1,17 @@
-//#include <facade/RavenGraphics.hpp>
-//#include <game/sys/render.hpp>
-//#include <game/sys/physics.hpp>
-//#include <game/sys/camera.hpp>
-//#include <game/sys/input.hpp>
-//#include <game/sys/IAphysics.hpp>
-//#include <ecs/man/entityManager.hpp>
-//#include <facade/ControllerMan.hpp>
-//#include <game/util/gameobjectfactory.hpp>
-#include "Game.hpp"
-#include "HPA/Graph.hpp"
-#include "HPA/Edge.hpp"
-#include "HPA/NavGraph.hpp"
-#include "HPA/Astar.hpp"
-#include <iostream>
+#include <facade/RavenGraphics.hpp>
+#include <game/sys/render.hpp>
+#include <game/sys/physics.hpp>
+#include <game/sys/camera.hpp>
+#include <game/sys/input.hpp>
+#include <game/sys/IAphysics.hpp>
+#include <ecs/man/entityManager.hpp>
+#include <facade/ControllerMan.hpp>
+#include <game/util/gameobjectfactory.hpp>
+#include <Game.hpp>
 
 int main(){
-    //SparseGraph<NavGraphNode<>,GraphEdge> grafo(false);
-    //grafo.Load("src/NavmeshZona_1.obj");
-    //for(auto& nodo : grafo.getNodes()){
-    //    std::cout << nodo;
-    //}
-//
-    //for(auto& edgeList : grafo.getEdges()){
-    //    for(auto edge : edgeList){
-    //        std::cout << edge;
-    //    }
-    //}    
-    //Graph_SearchStar<SparseGraph<NavGraphNode<>,GraphEdge>,Heuristic_Euclidian> a_star(grafo,11,15);
-    //a_star.SearchAStar();
-    //auto solucion = a_star.getPathToTarget();
-    //for(int n : solucion){
-    //    std::cout << n << " , ";
-    //}
-    //std::cout << "\n";
-    //DESCOMENTAR
-    //Game soulMirror = Game();
-    //Game* game = soulMirror.GetInstance();
-    //game->setState(State::State_Type::INIT);
-    //game->InitGame();
-    //game->MainLoop();
+   
     Game* game = Game::GetInstance();
-    game->setState(State::State_Type::INIT);
     game->InitGame();
     game->MainLoop();
 

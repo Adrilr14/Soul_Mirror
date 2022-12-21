@@ -1,7 +1,7 @@
 
 #include "RMalla.hpp"
 #include "RTextura.hpp"
-//#include "Malla.hpp"
+#include "Malla.hpp"
 
 // OBJ-Loader library
 #include "OBJ_Loader.h"
@@ -18,7 +18,7 @@ void RMalla::cargarFichero (const char* fichero) {
     bool loaded = loader.LoadFile(fichero);
 
     if(!loaded || loader.LoadedMeshes.size() == 0){
-        //std::cout << "ERROR:OBJ-Loader::Error al cargar el fichero" << std::endl;
+        std::cout << "ERROR:OBJ-Loader::Error al cargar el fichero" << std::endl;
         return;
     }
 
@@ -59,57 +59,6 @@ void RMalla::cargarFichero (const char* fichero) {
         }
 
         mallas.push_back(Malla(vertex, ind, textura));
-    }
-}
-
-void RMalla::cargarSkybox (const char *fichero){
-    objl::Loader loader;
-    bool loaded = loader.LoadFile(fichero);
-
-    if(!loaded || loader.LoadedMeshes.size() == 0){
-        //std::cout << "ERROR:OBJ-Loader::Error al cargar el fichero" << std::endl;
-        return;
-    }
-
-    std::vector<objl::Mesh> node = loader.LoadedMeshes;
-    glm::vec3 vert;
-    glm::vec3 norm;
-    glm::vec2 coordt;
-    Vertex vertices;
-
-    for(unsigned int i = 0; i < node.size(); i++){
-        objl::Mesh mesh = node[i];
-
-        for(unsigned int i = 0; i < mesh.Vertices.size(); i++)
-        {
-            vert.x = mesh.Vertices[i].Position.X;
-            vert.y = mesh.Vertices[i].Position.Y;
-            vert.z = mesh.Vertices[i].Position.Z;
-            vertices.position = vert;
-
-            norm.x = mesh.Vertices[i].Normal.X;
-            norm.y = mesh.Vertices[i].Normal.Y;
-            norm.z = mesh.Vertices[i].Normal.Z;
-            vertices.normal = norm;
-
-            coordt.x = mesh.Vertices[i].TextureCoordinate.X;
-            coordt.y = mesh.Vertices[i].TextureCoordinate.Y;
-            vertices.texCoords = coordt;
-
-            //std::cout << "Pos X = " << vert.x << "; Pos Y = " << vert.y << "; Pos Z = " << vert.z << std::endl;
-            //std::cout << std::endl;
-
-            //std::cout << "TextCoord X = " << mesh.Vertices[i].TextureCoordinate.X << "; TextCoord Y = " << mesh.Vertices[i].TextureCoordinate.Y << std::endl;
-            //std::cout << std::endl;
-
-            vertexSkybox.push_back(vertices);
-
-        }
-
-        for(unsigned int i = 0; i < mesh.Indices.size(); i++){
-            indSkybox.push_back(mesh.Indices[i]);
-            //std::cout << "Indices = " << mesh.Indices[i] << std::endl;
-        }
     }
 }
 

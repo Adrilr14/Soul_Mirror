@@ -1,49 +1,16 @@
 #pragma once
 #include <vector>
 #include <memory>
-#include <algorithm>
-#include <optional>
-#include <iostream>
-#include "../cmp/component.hpp"
-#include "../util/typealias.hpp"
+#include <ecs/util/typealias.hpp>
 
 
 struct ComponentVectorBase_t {
     virtual ~ComponentVectorBase_t() = default;
-    virtual Component_t* deleteCmpByID(EntityID_t eid) = 0;
 };
 
 template <typename CMP_t>
 struct ComponentVector_t : ComponentVectorBase_t{
     Vec_t<CMP_t> components;
-
-    constexpr auto findComponentIteratirByID(EntityID_t eid) noexcept {
-        //TODO!! Linear Search! Cambiar
-        std::optional itopt = std::find_if(components.begin(),components.end(),
-        [&eid](CMP_t& cmp){ return cmp.getEntityID() == eid; });
-
-        if(*itopt == components.end()){
-            itopt.reset();
-        }
-        return itopt;
-    }
-
-    Component_t* deleteCmpByID(EntityID_t eid) override final{
-        auto itopt = findComponentIteratirByID(eid);
-        if(!itopt){
-            return nullptr;
-        }
-        
-        auto it = *itopt;
-        if(it+1 != components.end()){
-            *it = components.back(); //Posible problema: Mirar el video de Fran V2 S16 minuto 59:00 en adelante
-        }
-
-        components.pop_back();
-        return it.base();
-        //TODO cambiar la forma de borrar el componente de la entidad
-        //components.erase(it);
-    }
 };
 
 
@@ -107,16 +74,6 @@ struct ComponentStorage_t {
 
     void clearAll(){
         m_componentVector.clear();
-    }
-
-    inline Component_t* deleteCmpByTypeID(ComponentTypeID_t cid, EntityID_t eid){
-        //std::cout << "deleteCmpByTypeID" << std::endl;
-        auto it = m_componentVector.find(cid);
-        if(it == m_componentVector.end()){
-            return nullptr; //TODO Error management
-        }
-        return it->second->deleteCmpByID(eid);
-
     }
 
     size_t size(){

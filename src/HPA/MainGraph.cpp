@@ -39,9 +39,9 @@ Mapa::Mapa(){
     }
 
     nodeStart = &nodes[4];
-    //std::cout << "Posicion nodeStart X y Y : " <<  nodeStart->x << " " << nodeStart->y << std::endl;
+    std::cout << "Posicion nodeStart X y Y : " <<  nodeStart->x << " " << nodeStart->y << std::endl;
     nodeEnd = &nodes[10];
-    //std::cout << "Posicion nodeEnd X y Y : " <<  nodeEnd->x << " " << nodeEnd->y << std::endl;
+    std::cout << "Posicion nodeEnd X y Y : " <<  nodeEnd->x << " " << nodeEnd->y << std::endl;
 }
 
 void Mapa::Solve_Astar(){
@@ -65,7 +65,7 @@ void Mapa::Solve_Astar(){
 		};
 
         Snode *nodeCurrent = nodeStart;
-		nodeStart->flocalGoal = 0.0f;   
+		nodeStart->flocalGoal = 0.0f;
 		nodeStart->fGlobalGoal = heuristic(nodeStart, nodeEnd);
 
         std::list<Snode*> listNotTestedNodes;
@@ -90,13 +90,13 @@ void Mapa::Solve_Astar(){
 			
 					
 			// Check each of this node's neighbours...
-			for (auto nodeNeighbour : nodeCurrent->vecNeibour )
+			for (auto nodeNeighbour : nodeCurrent->vecNeibour)
 			{
 				// ... and only if the neighbour is not visited and is 
 				// not an obstacle, add it to NotTested List
 				if (!nodeNeighbour->visitado && nodeNeighbour->obstaculo == false){
-                    //std::cout << "Posicion X y Y: " << nodeNeighbour->x << " " << nodeNeighbour->y << std::endl;
-                    //std::cout << "obstaculo" << nodeNeighbour->obstaculo << std::endl;
+                    std::cout << "Posicion X y Y: " << nodeNeighbour->x << " " << nodeNeighbour->y << std::endl;
+                    std::cout << "obstaculo" << nodeNeighbour->obstaculo << std::endl;
                     listNotTestedNodes.push_back(nodeNeighbour);
                 }
 					
@@ -126,17 +126,17 @@ void Mapa::Solve_Astar(){
 void Mapa::drawPath(){
      for (int x = 0; x < columna; x++){
         for (int y = 0; y < fila; y++){
-            //std::cout << nodes[y*columna + x].obstaculo ;
+            std::cout << nodes[y*columna + x].obstaculo ;
         }
-        //std::cout << std::endl;
+        std::cout << std::endl;
     }
 
-    //std::cout << "aaaaaaaaaaaaaaaaaaaaaaa" << std::endl;
+    std::cout << "aaaaaaaaaaaaaaaaaaaaaaa" << std::endl;
 
      for (int x = 0; x < columna; x++)
         for (int y = 0; y < fila; y++){
             if(nodes[y*columna + x].visitado == true){
-                //std::cout << "Posicion X y Y: " << nodes[y*columna + x].x << " " << nodes[y*columna + x].y << " " << std::endl;
+                std::cout << "Posicion X y Y: " << nodes[y*columna + x].x << " " << nodes[y*columna + x].y << " " << std::endl;
             }
         }
         

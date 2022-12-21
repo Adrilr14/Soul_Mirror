@@ -5,14 +5,13 @@
 #include <vector>
 #include <string>
 #include <string_view>
-#include "../cmp/entity.hpp"
-#include "../util/typealias.hpp"
-#include "../man/componentstorage.hpp"
-
+#include <ecs/cmp/entity.hpp>
+#include <ecs/util/typealias.hpp>
+#include <ecs/man/componentstorage.hpp>
 struct EventInfo;
 
 struct EntityManager_t {
-	static constexpr std::size_t kMAXENTITIES {1000};
+	static constexpr std::size_t kMAXENTITIES {100};
 
 	explicit EntityManager_t();
 	~EntityManager_t();
@@ -77,20 +76,7 @@ struct EntityManager_t {
 		return const_cast<CMPR_t*>(rc);
 	}
 
-	template <typename CMP>
-	void destroyCMPByID(EntityID_t eid){
-		auto* entity =  getEntityByID(eid);
-		if(!entity){
-			return; //TODO Error Management
-		}
-		auto* cmpttr = m_components.deleteCmpByTypeID(CMP::getComponentTypeID(),eid);
-	}
-
 	bool IsEmpty();
-	void updateEntitiesToBeDestroyed();
-	void destroyEntityByID(EntityID_t eid);
-	void destroyEntityECSMG(int id);
-
 
 private:
 	Vec_t<Entity_t> m_Entities{};

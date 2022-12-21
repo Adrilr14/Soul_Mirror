@@ -1,5 +1,5 @@
-#include "camera.hpp"
-#include "../../facade/ControllerMan.hpp"
+#include <game/sys/camera.hpp>
+#include <facade/ControllerMan.hpp>
 #include <iostream>
 
 void CameraSystem_t::addManager(EntityManager_t& man){
@@ -7,6 +7,7 @@ void CameraSystem_t::addManager(EntityManager_t& man){
 }
 
 void CameraSystem_t::cameraUpdate() const{
+    //std::cout<<"entro al camara update";
     float x,y,z = 0;
     //si al final la camara va a poder cambiarse entre 1 y 3 persona, habra que modificar esto para que la posicion de la camara sea la misma que la del player
     //primero saco la posicion del player actual, accediendo al array de input, que es solo el player, y de ahi sacando esa entity en concreto
@@ -34,4 +35,5 @@ void CameraSystem_t::cameraUpdate() const{
     //delete player;
     //delete cament;
     //ControllerMan::p().controller().cameraTrack(cament);
+    
 }

@@ -1,21 +1,28 @@
 
 #include "Nodo.hpp"
-#include "Billboard.hpp"
 #include <iostream>
 
-Nodo::Nodo (std::size_t n, Entidad *ent, Nodo *p) : id(n), matrizTransf(glm::mat4x4(1.0f)), entidad(ent), padre(p), traslacion(glm::vec3(0.f)), rotacion(glm::vec3(0.f)), escalado(glm::vec3(1.f)), actualizarMatriz(true), renderizar(true), tipoEntidad(0) {
+Nodo::Nodo (std::size_t n, Entidad *ent, Nodo *p) : id(n), matrizTransf(glm::mat4x4(1.0f)), entidad(ent), padre(p), escalado(glm::vec3(1.0f)), actualizarMatriz(true) {
     if(padre)
         padre->añadirHijo(this);
 }
+
 Nodo::~Nodo () {
     for(unsigned int i  = 0; i < hijos.size(); i++)
     {
         if(hijos[i])
         {
-            hijos[i]->clear();
+            hijos[i]->setPadre(padre);
+            hijos[i]->setMatrizTransf(glm::mat4x4(1.0f)); // inicializamos la matriz de transformación para que no se acumule
+            hijos[i]->setActualizarMatriz(true); // Como cambian de padre habrá que actualizar su matriz
+            padre->añadirHijo(hijos[i]);
         }
     }
-    //std::cout << "Me borro" << std::endl;
+    if(padre)
+        padre->borrarHijo(this);
+    //delete this;
+    std::cout << "Me borro" << std::endl;
+
 }
 
 void Nodo::añadirHijo (Nodo *h) {
@@ -27,7 +34,7 @@ void Nodo::borrarHijo (Nodo *h) {
     for(unsigned int i  = 0; i < hijos.size(); i++)
     {
         if(hijos[i] == h){
-            //hijos[i]->~Nodo();
+            hijos[i]->~Nodo();
             hijos.erase(hijos.begin() + i);
         }
     }
@@ -64,8 +71,7 @@ glm::mat4x4 Nodo::getMatrizTransf () {
 }
 
 void Nodo::setEntidad (Entidad *ent) {
-    if(ent != entidad)
-        entidad = ent;
+    entidad = ent;
 }
 
 Entidad *Nodo::getEntidad () {
@@ -197,26 +203,6 @@ void Nodo::escalar (glm::vec3 esc) {
     }
 }
 
-void Nodo::setActualizarMatriz (bool act) {
-    actualizarMatriz = act;
-}
-
-bool Nodo::getVisibilidad () {
-    return renderizar;
-}
-
-void Nodo::setVisibilidad (bool visibilidad) {
-    renderizar = visibilidad;
-}
-
-int Nodo::getTipoEntidad () {
-    return tipoEntidad;
-}
-
-void Nodo::setTipoEntidad (int tipo) {
-    tipoEntidad = tipo;
-}
-
 void Nodo::recorrer (glm::mat4x4 matrizAcum, unsigned int shader, bool actualizar) {
     //std::cout << "adentro" << std::endl;
     bool aux = false; // Booleano auxiliar para actualizar las matrices de transformación recursivamente si es true
@@ -236,12 +222,7 @@ void Nodo::recorrer (glm::mat4x4 matrizAcum, unsigned int shader, bool actualiza
         //std::cout << "actualizo matriz" << std::endl;
     }
     
-    // Variable para comprobar si se renderiza (visibilidad) el padre de un nodo si tiene padre (en caso de no tener padre estará por defecto a true)
-    bool renderizarPadre = true;
-    if(padre) {renderizarPadre = false;}
-
-    // Solo dibujamos si tiene una entidad, si se renderiza (visible) y si se renderiza su padre, y si el tipo de Entidad es = a 0
-    if(entidad && renderizar == true && tipoEntidad == 0)
+    if(entidad)
     {
         //std::cout << "dibujo" << std::endl;
         //std::cout << entidad << std::endl;
@@ -256,3 +237,6 @@ void Nodo::recorrer (glm::mat4x4 matrizAcum, unsigned int shader, bool actualiza
     
 }
 
+void Nodo::setActualizarMatriz (bool act) {
+    actualizarMatriz = true;
+}

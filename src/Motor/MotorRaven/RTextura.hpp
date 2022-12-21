@@ -18,10 +18,9 @@ public:
     //void setPath (const char *path);
 
     void cargarFichero (const char* path) override; // Textura
-    std::string getPath() { return path; }; 
+
 private:
     //unsigned int id;
     unsigned int idDiffuse, idHeight, idMetallic, idNormal, idRoughness;
     int widthText, heightText;
-    std::string path;
 };

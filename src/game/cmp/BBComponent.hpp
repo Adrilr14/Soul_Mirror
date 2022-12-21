@@ -1,6 +1,6 @@
 #pragma once
 #include <cstdint>
-#include "../../ecs/cmp/component.hpp"
+#include <ecs/cmp/component.hpp>
 
 struct BBComponent_t : ComponentBase_t<BBComponent_t>{
     explicit BBComponent_t(std::size_t eid)

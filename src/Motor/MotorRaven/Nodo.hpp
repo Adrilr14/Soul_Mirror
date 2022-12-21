@@ -2,18 +2,12 @@
 
 #include "Entidad.hpp"
 #include "vector"
-#include <type_traits>
 
 // GLM library
 #include "vec3.hpp" // glm::vec3
 #include "vec4.hpp" // glm::vec4
 #include "mat4x4.hpp" // glm::mat4
 #include <ext/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale
-
-template<typename Base, typename T>
-inline bool instanceof(const T) {
-    return std::is_base_of<Base, T>::value;
-}
 
 class Nodo
 {
@@ -57,16 +51,9 @@ public:
     void rotar (glm::vec3 rot);
     void escalar (glm::vec3 esc);
 
-    void setActualizarMatriz (bool act);
-
-    bool getVisibilidad ();
-    void setVisibilidad (bool visibilidad);
-
-    int getTipoEntidad ();
-    void setTipoEntidad (int tipo);
-
     void recorrer (glm::mat4x4 matAcum, unsigned int shader, bool actualizar); 
 
+    void setActualizarMatriz (bool act);
 
 private:
     std::size_t id;
@@ -78,6 +65,4 @@ private:
     glm::vec3 rotacion;
     glm::vec3 escalado;
     bool actualizarMatriz;
-    bool renderizar;
-    int tipoEntidad; // 0 --> EModelo, ECamara, ELuz; 1 --> Skybox; 2 --> Billboard
 };

@@ -5,7 +5,7 @@
 #include <vector>
 #include <map>
 #include "Event.hpp"
-#include "../ecs/util/typealias.hpp"
+#include <ecs/util/typealias.hpp>
 #include <iostream>
 
 //using callBack = std::function<void(Event&)>;

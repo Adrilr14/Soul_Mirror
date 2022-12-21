@@ -47,7 +47,7 @@ void Malla::setupMalla() {
 
 void Malla::dibujar (unsigned int shader) {
 
-    /*unsigned int i = 0;
+    unsigned int i = 0;
 
     ///TEXTURA///
     if(textura != nullptr)
@@ -109,7 +109,7 @@ void Malla::dibujar (unsigned int shader) {
     // Put Shininess
     glUniform1f(glGetUniformLocation(shader, "Material.Shininess"), 8.f);
 
-    /////////////*/
+    /////////////
 
     ///MALLA///
     glBindVertexArray(VAO);

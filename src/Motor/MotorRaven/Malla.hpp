@@ -30,8 +30,6 @@ public:
 
     void dibujar(unsigned int shader);
 
-    void setTextura (RTextura *t) {textura = t;}
-
      
 private:
     std::vector<Vertex> vertex;

@@ -1,0 +1,198 @@
+{
+    "PLAYER":{
+        "x": -568.8,
+        "y": 0,
+        "z": 210.6,
+        "MODEL": "media/obj/player.obj",
+        "TEXTURE": "media/color_player.jpg"
+    },
+    "STATIC":{
+        "0":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_1",
+            "MODEL": "media/obj/z5_p1.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "1":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_2",
+            "MODEL": "media/obj/z5_p2.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "2":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_3",
+            "MODEL": "media/obj/z5_p3.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "3":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_4",
+            "MODEL": "media/obj/z4_z5_p1.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "4":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_5",
+            "MODEL": "media/obj/z4_z5_p2.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "5":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_6",
+            "MODEL": "media/obj/z5_p_inv.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "6":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "suelo",
+            "MODEL": "media/obj/z5_suelo.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "7":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "tree_1",
+            "MODEL": "media/obj/z5_trees.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "8":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "tree_2",
+            "MODEL": "media/obj/z4_z5_trees.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "9":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "stone_1",
+            "MODEL": "media/obj/z4_z5_stones.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "10":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "farolillo_1",
+            "MODEL": "media/obj/z4_z5_farolillos.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "11":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_valla_1",
+            "MODEL": "media/obj/z5_vallas_1.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "12":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_valla_2",
+            "MODEL": "media/obj/z5_vallas_2.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "13":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "bola_1",
+            "MODEL": "media/obj/z5_bola1.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "14":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "bola_2",
+            "MODEL": "media/obj/z5_bola2.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "15":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "bola_3",
+            "MODEL": "media/obj/z5_bola3.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "16":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "zone_4",
+            "MODEL": "media/obj/z3_z4_p1.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        }
+    }
+}

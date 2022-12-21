@@ -19,6 +19,15 @@ void EventManager::addEvent(const Event& evt){//se inserta un evento en el vecto
 
     //for random insert/remove : use std::list (if data size very small (< 64b on my computer), use std::vector)
     //(?) Preguntar a Fran que es mejor utilizar list o vector segun lo que vi es mejor list dependiendo del tamaño de datos
+    std::cout<<"estoy al principio del add event y este es el evento que ha llegado:\n";
+    switch(evt.type){
+        case Input_WD : std::cout<<"Este es el valor numerico del type de press WD: "<<evt.type; break;
+        case Delete_Entities_Render : std::cout<<"delete_entities_render\n";break;
+        case Delete_Entities_Manager : std::cout<<"delete_entities_manager\n";break;
+        case Change_Zone : std::cout<<"change_zone\n";break;
+        case Render_Change_Zone : std::cout<<"render_change_zone\n";break;
+        default: std::cout<<"no ha llegado ningun evento\n";
+    }
     //std::cout<<"estoy en el addevent del eventmanager y el size del vector es de: "<<eventos.size()<<"\n";
     
     if(eventos.size() > 0){
@@ -28,6 +37,7 @@ void EventManager::addEvent(const Event& evt){//se inserta un evento en el vecto
         std::vector<Event>::iterator it;
         for (it = eventos.begin(); it != eventos.end() ;it++){
             if(evt.type <= it->type){
+                std::cout<<"entro a la condicion del for del addevent\n";
                 break;
             }
         }
@@ -41,8 +51,6 @@ void EventManager::addEvent(const Event& evt){//se inserta un evento en el vecto
 
 void EventManager::AddEventToListener(const EventListener& listen){//se vincula un tipo de evento a un listener, que tiene la funcion
     //std::cout << "entra en el addListener\n";
-    if(eventos.capacity() < 50)
-        eventos.reserve(50);
     //Hay que ver si ese evento ya esta registrado
     auto it = listener.find(listen.listenerType);
     //si entra en este if significa que no lo estaba, lo creamos
@@ -82,7 +90,7 @@ void EventManager::showListener(){
     //Obtenemos el iterador y con begin para empezar 
     //No hace falta comprobar si el listener esta vacio pq se comprueba en el bucle
     for ( auto it = listener.begin(); it != listener.end();  it++){
-        //std::cout << "Listener first " << it->first << "\n";
-        //std::cout << "Listener second " << it->second.data() << "\n";
+        std::cout << "Listener first " << it->first << "\n";
+        std::cout << "Listener second " << it->second.data() << "\n";
     }
 }

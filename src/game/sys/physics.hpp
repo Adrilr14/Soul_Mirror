@@ -1,7 +1,7 @@
 #pragma once
-#include <chrono>
-#include "../../ecs/util/typealias.hpp"
-#include "../../EventManager/EventManager.hpp"
+
+#include <ecs/util/typealias.hpp>
+#include <EventManager/EventManager.hpp>
 struct ControllerMan;
 struct EntityManager_t;
 
@@ -16,21 +16,10 @@ struct PhysicsSystem_t
     void addManager(EntityManager_t&);
     void physicsInit() const;
     void physicsUpdate() const;
-    void updateChildsPlayer() const;
     void switchDirection(EventInfo);
-    void positionChangeZone(EventInfo info);
-    void positionChangePlayer(EventInfo info);
-    void isRunning(EventInfo);
-    void notRunning(EventInfo);
-    void RunningTren() const;
     void addEventListeners();
-    void playerDead(EventInfo) const;
-    void teleport(EventInfo) const;
     void probando(EventInfo);
 private:
     //EntityManager_t* manager {nullptr};
-    mutable std::chrono::time_point<std::chrono::steady_clock> now;
-    mutable bool iswalking{false};
     EntityManager_t& manager;
-    mutable bool read = false;
 }; //PhysicsSystem

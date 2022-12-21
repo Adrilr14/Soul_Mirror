@@ -6,7 +6,7 @@
 #define GLEW_STATIC
 #include <glew.h>
 
-RTextura::RTextura(std::string fichero) : Recurso(fichero),path(fichero) {}
+RTextura::RTextura(std::string fichero) : Recurso(fichero) {}
 
 /*void RTextura::setPath (const char *path) {
     this->setNombre(path);
@@ -86,24 +86,24 @@ void RTextura::cargarFichero (const char* path) {
         widthText = width;
         heightText = height;
 
+        // Flip the image on the Y axis
+        int i,j;
+        for( j = 0; j*2 < height; ++j )
+        {
+            int index1 = j * width * nrComponents;
+            int index2 = (height - 1 - j) * width * nrComponents;
+            for( i = width * nrComponents; i > 0; --i )
+            {
+                GLubyte temp = data[index1];
+                data[index1] = data[index2];
+                data[index2] = temp;
+                ++index1;
+                ++index2;
+            }
+        }
+
         if (data)
         {
-            // Flip the image on the Y axis
-            int i,j;
-            for( j = 0; j*2 < height; ++j )
-            {
-                int index1 = j * width * nrComponents;
-                int index2 = (height - 1 - j) * width * nrComponents;
-                for( i = width * nrComponents; i > 0; --i )
-                {
-                    GLubyte temp = data[index1];
-                    data[index1] = data[index2];
-                    data[index2] = temp;
-                    ++index1;
-                    ++index2;
-                }
-            }
-            
             GLenum format = GL_RGBA;
             if (nrComponents == 1)
                 format = GL_RED;
@@ -125,7 +125,7 @@ void RTextura::cargarFichero (const char* path) {
         }
         else
         {
-            //std::cout << "Texture failed to load at path: " << path << std::endl;
+            std::cout << "Texture failed to load at path: " << path << std::endl;
             SOIL_free_image_data(data);
         }
 

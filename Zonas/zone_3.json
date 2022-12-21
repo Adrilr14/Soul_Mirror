@@ -1,0 +1,406 @@
+{
+    "PLAYER":{
+        "x": -112.3,
+        "y": 0,
+        "z": 239,
+        "MODEL": "media/obj/player.obj",
+        "TEXTURE": "media/color_player.jpg"
+    },
+    "STATIC":{
+        "0":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_1",
+            "MODEL": "media/obj/z3_p1.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "1":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_2",
+            "MODEL": "media/obj/z3_p2.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "2":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_3",
+            "MODEL": "media/obj/z3_p3.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "3":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_4",
+            "MODEL": "media/obj/z3_p4.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "4":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_5",
+            "MODEL": "media/obj/z3_p5.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "5":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_6",
+            "MODEL": "media/obj/z3_p6.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "6":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_7",
+            "MODEL": "media/obj/z3_p7.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "7":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_8",
+            "MODEL": "media/obj/z2_z3_p1.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "8":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_9",
+            "MODEL": "media/obj/z2_z3_p2.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "9":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_10",
+            "MODEL": "media/obj/z2_z3_p3.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "10":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_11",
+            "MODEL": "media/obj/z2_z3_p4.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "11":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_12",
+            "MODEL": "media/obj/z2_z3_p5.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "12":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_13",
+            "MODEL": "media/obj/z3_z3_p6.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "13":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_14",
+            "MODEL": "media/obj/z2_z3_p7.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "14":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_15",
+            "MODEL": "media/obj/z2_z3_p8.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "15":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_16",
+            "MODEL": "media/obj/z2_z3_p9.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "16":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_17",
+            "MODEL": "media/obj/z2_z3_p10.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "17":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_18",
+            "MODEL": "media/obj/z3_z4_p1.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "18":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_19",
+            "MODEL": "media/obj/z3_z4_p2.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "19":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "suelo",
+            "MODEL": "media/obj/z3_suelo.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "20":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "tree_1",
+            "MODEL": "media/obj/z3_trees.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "21":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "tree_2",
+            "MODEL": "media/obj/z2_z3_trees.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "22":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "tree_3",
+            "MODEL": "media/obj/z3_z4_trees.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "23":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "stone_1",
+            "MODEL": "media/obj/z3_z4_stones.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "24":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_stone_1",
+            "MODEL": "media/obj/z3_stones_1.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "25":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_stone_2",
+            "MODEL": "media/obj/z3_stones_2.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "26":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "farolillo_1",
+            "MODEL": "media/obj/z3_z4_farolillos.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "27":{
+            "x": -207,
+            "y": 0,
+            "z": 264.5,
+            "rx": 0,
+            "ry": -45,
+            "rz": 0,
+            "NAME": "col_farolillo_1",
+            "MODEL": "media/obj/farolillo.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "28":{
+            "x": -188.1,
+            "y": 0,
+            "z": 189.7,
+            "rx": 0,
+            "ry": -90,
+            "rz": 0,
+            "NAME": "col_farolillo_2",
+            "MODEL": "media/obj/farolillo.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "29":{
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_farolillo_3",
+            "MODEL": "media/obj/farolillo.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "30":{
+            "x": -307.4,
+            "y": 0,
+            "z": 245.7,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "potion_1",
+            "MODEL": "media/obj/pocion.obj",
+            "TEXTURE": "media/texturas/color_suelo.jpg"
+        },
+        "31":{
+            "x": -193.6,
+            "y": 0,
+            "z": 263.4,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "chest_1",
+            "MODEL": "media/obj/cofre.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "32":{
+            "x": -193.6,
+            "y": 0,
+            "z": 263.4,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "potion_2",
+            "MODEL": "media/obj/pocion.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "33":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "zone_2",
+            "MODEL": "media/obj/z2_z3_change.obj",
+            "TEXTURE": "media/texturas/farolillo.jpg"
+        },
+        "34":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "zone_4",
+            "MODEL": "media/obj/z3_z4_change.obj",
+            "TEXTURE": "media/texturas/tree.jpg"
+        }
+    },
+    "ENEMY":{
+        "0":{
+            "x": -261,
+            "y": 0,
+            "z": 209.3,
+            "NAME": "enemy_1",
+            "MODEL": "media/obj/player.obj",
+            "TEXTURE":"media/color_enemy.jpg"
+        }
+    }   
+}

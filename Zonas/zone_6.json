@@ -1,0 +1,276 @@
+{
+    "PLAYER":{
+        "x": -470.7,
+        "y": 0,
+        "z": 328,
+        "MODEL": "media/obj/player.obj",
+        "TEXTURE": "media/color_player.jpg"
+    },
+    "STATIC":{
+        "0":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_1",
+            "MODEL": "media/obj/z6_p1.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "1":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_2",
+            "MODEL": "media/obj/z6_p2.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "2":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "suelo",
+            "MODEL": "media/obj/z6_suelo.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "3":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "farolillo_1",
+            "MODEL": "media/obj/z6_farolillos.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "4":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "tree_1",
+            "MODEL": "media/obj/z6_trees.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "5":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_valla_1",
+            "MODEL": "media/obj/z6_vallas_1.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "6":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_valla_2",
+            "MODEL": "media/obj/z6_vallas_1.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "7":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_valla_3",
+            "MODEL": "media/obj/z6_vallas_3.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "8":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_valla_4",
+            "MODEL": "media/obj/z6_vallas_4.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "9":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_valla_5",
+            "MODEL": "media/obj/z6_vallas_5.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "10":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_valla_6",
+            "MODEL": "media/obj/z6_vallas_6.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "11":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_valla_7",
+            "MODEL": "media/obj/z6_vallas_7.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "12":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_valla_8",
+            "MODEL": "media/obj/z6_vallas_8.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "13":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_valla_9",
+            "MODEL": "media/obj/z6_vallas_9.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "14":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_valla_10",
+            "MODEL": "media/obj/z6_vallas_10.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "15":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_valla_11",
+            "MODEL": "media/obj/z6_vallas_11.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "16":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_valla_12",
+            "MODEL": "media/obj/z6_vallas_12.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "17":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "col_valla_13",
+            "MODEL": "media/obj/z6_vallas_13.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "18":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "casa_1",
+            "MODEL": "media/obj/casa.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "19":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "zone_4",
+            "MODEL": "media/obj/z4_z6_change.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "20":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "farolillo_2",
+            "MODEL": "media/obj/z4_z6_farolillos.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "21":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "tree_2",
+            "MODEL": "media/obj/z4_z6_trees.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "22":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_3",
+            "MODEL": "media/obj/z4_z6_p1.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        },
+        "23":{
+            "x": 0,
+            "y": 0,
+            "z":0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0,
+            "NAME": "pared_4",
+            "MODEL": "media/obj/z4_z6_p2.obj",
+            "TEXTURE": "media/texturas/color_pared.jpg"
+        }
+
+    }
+}

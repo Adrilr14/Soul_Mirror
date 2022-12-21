@@ -1,14 +1,13 @@
 #pragma once
 #include <cstdint>
-#include "component.hpp"
-#include "../util/typealias.hpp"
+#include <ecs/cmp/component.hpp>
+#include <ecs/util/typealias.hpp>
 #include <string_view>
 #include <string>
 #include <iostream>
-
 struct Entity_t {
 	Entity_t (std::string_view n) {
-		//std::cout<<"Estoy en el constructor de entidad y me estan construyendo\n";
+		std::cout<<"Estoy en el constructor de entidad y me estan construyendo\n";
 		nombre = n.data();
 	};
 
@@ -48,18 +47,7 @@ struct Entity_t {
 		return false; 
 	}
 
-	void updateComponent(ComponentTypeID_t cid, Component_t* cmpttr){
-		auto it = m_components.find(cid);
-		if(it != m_components.end()){
-			it->second = cmpttr;
-		}
-	}
-
-	bool getDestroyState() { return destroy; }
-	void SetEntityToDestroy() { destroy = true; }
 	std::string getName(){ return nombre; }
-	auto begin() { return m_components.begin();};
-	auto end() { return m_components.end();};
 
 	//int32_t w 	{1}, h 	{1}, d 	{1}; //dimensiones
 	constexpr EntityID_t getEntityID() const noexcept { return entityID;};
@@ -69,6 +57,6 @@ private:
 	EntityID_t entityID { ++nextID };
 	inline static EntityID_t nextID {0};
 	std::string nombre;
-	bool destroy {false};
+
 	 
 };
